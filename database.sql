@@ -1,10 +1,10 @@
-CREATE TABLE IF NOT EXISTS `positions` (
+CREATE TABLE IF NOT EXISTS `users` (
   `number` varchar(20) NOT NULL,
-  `latitude` double NOT NULL,
-  `longitude` double NOT NULL,
-  `update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `gcm` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-ALTER TABLE `positions`
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
  ADD PRIMARY KEY (`number`);
- 

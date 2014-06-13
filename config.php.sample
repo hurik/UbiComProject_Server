@@ -1,11 +1,17 @@
 <?php
+
 /*
  * All database connection variables
  */
- 
 define('DB_USER', ""); // db user (xampp default root)
 define('DB_PASSWORD', ""); // db password (normally null in xampp)
 define('DB_DATABASE', ""); // database name
 define('DB_SERVER', ""); // db server
+
+
+/*
+ * Google API Key
+ */
+define("GOOGLE_API_KEY", ""); // Place your Google API Key
 
 ?>
