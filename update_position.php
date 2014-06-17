@@ -13,16 +13,17 @@ if (isset($_GET["message"])) {
     $users       = mysql_query("select * FROM users");
     $no_of_users = mysql_num_rows($users);
     
+	$registatoin_ids = array();
+	
     while ($row = mysql_fetch_array($users)) {
-        $registatoin_ids = array(
-            $row["gcm"]
-        );
-        $message = array(
+         array_push($registatoin_ids, $row["gcm"]); 
+    }
+	
+	$message = array(
             "message" => $message
         );
         
-		$gcm->send_notification($registatoin_ids, $message);
-    }
+	echo $gcm->send_notification($registatoin_ids, $message);
 }
 
 ?>
