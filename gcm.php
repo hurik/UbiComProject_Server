@@ -19,7 +19,8 @@ class GCM {
         
         $fields = array(
             'registration_ids' => $registatoin_ids,
-            'data' => $message
+            'data' => $message,
+			'delay_while_idle'=> false,
         );
         
         $headers = array(
