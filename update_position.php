@@ -1,7 +1,8 @@
 <?php
 
-if (isset($_GET["message"])) {
+if (isset($_GET["message"]) && isset($_GET["allowed"])) {
     $message = $_GET["message"];
+    $allowed = explode(";", $_GET["allowed"]);
     
     require_once __DIR__ . '/db_connect.php';
     $db = new DB_CONNECT();
@@ -13,17 +14,21 @@ if (isset($_GET["message"])) {
     $users       = mysql_query("select * FROM users");
     $no_of_users = mysql_num_rows($users);
     
-	$registatoin_ids = array();
-	
+    $registatoin_ids = array();
+    
     while ($row = mysql_fetch_array($users)) {
-         array_push($registatoin_ids, $row["gcm"]); 
+        if (array_search($row["number"], $allowed) !== false) {
+            array_push($registatoin_ids, $row["gcm"]);
+        }
     }
-	
-	$message = array(
+    
+    if (count($registatoin_ids) > 0) {
+        $message = array(
             "message" => $message
         );
         
-	echo $gcm->send_notification($registatoin_ids, $message);
+        echo $gcm->send_notification($registatoin_ids, $message);
+    }
 }
 
 ?>
