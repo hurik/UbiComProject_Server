@@ -2,16 +2,11 @@
 
 class GCM {
     
-    //put your code here
-    // constructor
-    function __construct() {
-    }
-    
     /**
      * Sending Push Notification
      */
-    public function send_notification($registatoin_ids, $message) {
-        // include config
+    public static function send_notification($registatoin_ids, $message) {
+        // Include config
         include_once './config.php';
         
         // Set POST variables
@@ -20,7 +15,7 @@ class GCM {
         $fields = array(
             'registration_ids' => $registatoin_ids,
             'data' => $message,
-			'delay_while_idle'=> false,
+            'delay_while_idle' => false
         );
         
         $headers = array(
