@@ -47,7 +47,14 @@ if (isset($_GET["message"]) && isset($_GET["allowed"])) {
             
             // Send it!
             echo GCM::send_notification($receivers_gcm_ids, $message);
-        }
+        } else {
+			// Database error
+			$response["success"] = 0;
+			$response["message"] = "No allowed number!";
+			
+			// Echoing JSON response
+			echo json_encode($response);
+		}
     } else {
         // Database error
         $response["success"] = 0;
